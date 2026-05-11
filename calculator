@@ -1,12 +1,12 @@
 #!/bin/env bash
 
-# HINT: You can test the result of script using following command
-# echo "1 + 1" | ./calculator
-
-# Read expression from stdin
+# Meminta input dari user
+echo "Masukkan ekspresi matematika (Contoh: 10 + 5, 2 * 3, 10 / 4):"
 read -r expression
 
-# Calculate result using bc (supports +, -, *, /)
-# TODO: evaluate $expression using bc command and store in $result variable
+# Evaluasi menggunakan Java (Jshell)
+# Menggunakan (double) agar hasil pembagian ada komanya (misal 5/2 jadi 2.5)
+result=$(echo "System.out.println((double)($expression));" | jshell -s -)
 
-echo "$result"
+# Menampilkan hasil
+echo "Hasilnya adalah: $result"
