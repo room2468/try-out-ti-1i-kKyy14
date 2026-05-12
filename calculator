@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
+# Saya akan membuat program yang outputnya sama sesuai soal.
 
-#saya akan membuat program yang outputnya sama sesuai soal
 read -r expression
-#membaca ekspresi matematika dari input 
+# Membaca ekspresi matematika dari input
+
 result=$(echo "System.out.println((double)($expression));" | jshell -s - | tail -n 1)
-#menghitung menggunakan jshell
-#tail -n diguakan untuk hasil akhir
+# Menghitung ekspresi menggunakan JShell, tail -n digunakan untuk mengambil hasil akhir
 
 if [[ $result == *.0 ]]; then
-  result=${result%.0}
+    result=${result%.0}
 fi
-#jika hasil serupa berupa bilangan bulat misalnya 2.0, hilangkan .0
+# Jika hasil berupa bilangan bulat seperti 2.0, hilangkan .0
 
 echo "$result"
-#menampilkan hasil akhir/outputnya
+# Menampilkan hasil akhir/outputnya
