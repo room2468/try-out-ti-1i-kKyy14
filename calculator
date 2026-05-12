@@ -1,12 +1,16 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-# Meminta input dari user
-echo "Masukkan ekspresi matematika (Contoh: 10 + 5, 2 * 3, 10 / 4):"
+#saya akan membuat program yang outputnya sama sesuai soal
 read -r expression
+#membaca ekspresi matematika dari input 
+result=$(echo "System.out.println((double)($expression));" | jshell -s - | tail -n 1)
+#menghitung menggunakan jshell
+#tail -n diguakan untuk hasil akhir
 
-# Evaluasi menggunakan Java (Jshell)
-# Menggunakan (double) agar hasil pembagian ada komanya (misal 5/2 jadi 2.5)
-result=$(echo "System.out.println((double)($expression));" | jshell -s -)
+if [[ $result == *.0 ]]; then
+  result=${result%.0}
+fi
+#jika hasil serupa berupa bilangan bulat misalnya 2.0, hilangkan .0
 
-# Menampilkan hasil
-echo "Hasilnya adalah: $result"
+echo "$result"
+#menampilkan hasil akhir/outputnya
