@@ -1,12 +1,14 @@
 #!/bin/env bash
 
-#Meminta input dari user
-echo "Silakan masukkan operasi matematika (contoh: 10 + 5, 2 * 3, 10 / 4):"
+# PETUNJUK: Anda dapat menguji program dengan perintah berikut
+# echo "1 + 1" | ./calculator
+
+# Membaca ekspresi matematika dari input standar
 read -r expression
 
-#Memproses ekspresi dengan bantuan JShell
-#Tipe data double digunakan agar hasil pembagian dapat berupa angka desimal, misalnya 5/2 menjadi 2.5
-result=$(echo "System.out.println((double)($expression));" | jshell -s -)
+# Menghitung hasil menggunakan bc
+# Mendukung operasi penjumlahan, pengurangan, perkalian, dan pembagian
+result=$(echo "$expression" | bc)
 
-#Menampilkan hasil/outputnya
-echo "Hasilnya adalah: $result"
+# Menampilkan hasil perhitungan
+echo "$result"
