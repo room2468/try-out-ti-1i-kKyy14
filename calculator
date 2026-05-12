@@ -1,13 +1,12 @@
 #!/bin/env bash
 
-# Program ini dibuat untuk menghasilkan output yang sesuai dengan ketentuan soal.
-# Meminta input dari user
+#Meminta input dari user
 echo "Silakan masukkan operasi matematika (contoh: 10 + 5, 2 * 3, 10 / 4):"
 read -r expression
 
-# Memproses ekspresi dengan bantuan JShell
-# Tipe data double digunakan agar hasil pembagian dapat berupa angka desimal, misalnya 5/2 menjadi 2.5
+#Memproses ekspresi dengan bantuan JShell
+#Tipe data double digunakan agar hasil pembagian dapat berupa angka desimal, misalnya 5/2 menjadi 2.5
 result=$(echo "System.out.println((double)($expression));" | jshell -s -)
 
-# Menampilkan hasil/outputnya
+#Menampilkan hasil/outputnya
 echo "Hasilnya adalah: $result"
