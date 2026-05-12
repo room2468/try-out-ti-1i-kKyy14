@@ -4,8 +4,9 @@
 read -r expression
 # Membaca ekspresi matematika dari input
 
-result=$(echo "System.out.println((double)($expression));" | jshell -s - | tail -n 1)
-# Menghitung ekspresi menggunakan JShell, tail -n digunakan untuk mengambil hasil akhir
+result=$(echo "System.out.println((double)($expression));" | jshell -s - | tail -n 1 | xargs)
+# Menghitung ekspresi menggunakan JShell, tail -n digunakan untuk mengambil hasil akhir dan xargs digunakan untuk menghapus karakter tambahan
+
 
 if [[ $result == *.0 ]]; then
     result=${result%.0}
